@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yt-simple</title>
+  <link rel="icon" href="./favicon.png" sizes="256x256">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="page-content">
+    <img id="yt-simple-logo" src="./favicon.png" width="72px" draggable="false" />
+
+    <div class="catppuccin-palette-wrapper">
+      <div class="clr-rosewater"></div>
+      <div class="clr-flamingo"></div>
+      <div class="clr-pink"></div>
+      <div class="clr-mauve"></div>
+      <div class="clr-red"></div>
+      <div class="clr-maroon"></div>
+      <div class="clr-peach"></div>
+      <div class="clr-yellow"></div>
+      <div class="clr-green"></div>
+      <div class="clr-teal"></div>
+      <div class="clr-sky"></div>
+      <div class="clr-sapphire"></div>
+      <div class="clr-blue"></div>
+      <div class="clr-lavender"></div>
+    </div>
+
+    <h1>yt-simple</h1>
+
+    <div id="form-wrapper">
+      <form id="form" method="post" onsubmit="return search()" draggable="false">
+        <input type="text" id="search-bar" placeholder="Search" value="" draggable="false" autocomplete="off" />
+      </form>
+      <div class="menu-buttons-wrapper">
+        <a href="https://www.youtube.com/feed/subscriptions" draggable="false">
+          <button id="btn-subscriptions" class="menu-button" tabindex="-1" draggable="false">
+            Subsciptions
+          </button>
+        </a>
+        <a href="https://www.youtube.com" draggable="false">
+          <button id="btn-explore" class="menu-button" tabindex="-1" draggable="false">
+            Explore
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const baseUrl = "https://www.youtube.com/results?search_query=";
+    const searchBar = document.getElementById('search-bar');
+    let searchValue = "";
+
+    searchBar.oninput = (e) => {
+      searchValue = e.target.value.replace(/\s/g, '+');
+      searchBar.value = e.target.value;
+    }
+
+    function search() {
+      window.location.href = baseUrl + searchValue;
+      return false;
+    }
+  </script>
+</body>
+
+</html>

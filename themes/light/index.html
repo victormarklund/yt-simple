@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" draggable="false">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yt-simple</title>
+  <link rel="icon" href="./favicon.png" sizes="256x256">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="page-content">
+    <svg width="72" height="72" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="246" height="170" rx="20" ry="20" transform="translate(5 43)" fill="var(--clr-border)" />
+      <path d="M170.5 128L103 166.971L103 89.0289L170.5 128Z" fill="var(--clr-background)" />
+    </svg>
+
+    <h1>yt-simple</h1>
+
+    <div id="form-wrapper">
+      <form id="form" method="post" onsubmit="return search()">
+        <input type="text" id="search-bar" placeholder="Search" value="" autocomplete="off" />
+      </form>
+      <div class="menu-buttons-wrapper">
+        <a href="https://www.youtube.com/feed/subscriptions">
+          <button id="btn-subscriptions" class="menu-button" tabindex="-1">
+            Subsciptions
+          </button>
+        </a>
+        <a href="https://www.youtube.com">
+          <button id="btn-explore" class="menu-button" tabindex="-1">
+            Explore
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const baseUrl = "https://www.youtube.com/results?search_query=";
+    const searchBar = document.getElementById('search-bar');
+    let searchValue = "";
+
+    searchBar.oninput = (e) => {
+      searchValue = e.target.value.replace(/\s/g, '+');
+      searchBar.value = e.target.value;
+    }
+
+    function search() {
+      window.location.href = baseUrl + searchValue;
+      return false;
+    }
+  </script>
+</body>
+
+</html>
